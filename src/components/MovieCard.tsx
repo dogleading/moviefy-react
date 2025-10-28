@@ -1,25 +1,17 @@
-import type { Movie } from "../movies";
+import type { Movie } from "../lib/types";
 
-interface MovieCardProps {
-  movie: Movie;
-}
-
-const MovieCard = ({ movie }: MovieCardProps) => {
+const MovieCard = ({ Title, Year, Poster, Plot }: Movie) => {
   return (
     <div className="bg-gray-800/50 rounded-lg shadow-lg overflow-hidden">
-      <img
-        src={movie.image}
-        alt={movie.title}
-        className="w-full h-64 object-cover"
-      />
+      <img src={Poster} alt={Title} className="w-full h-64 object-cover" />
       <div className="p-4">
-        <h3 className="text-lg font-bold text-white">{movie.title}</h3>
+        <h3 className="text-lg font-bold text-white">{Title}</h3>
       </div>
       <div className="p-4">
-        <p className="text-sm text-gray-400">{movie.director}</p>
-        <p className="text-sm text-gray-400">{movie.year}</p>
-        <p className="text-sm text-gray-400">{movie.genre}</p>
-        <p className="text-sm text-gray-400">{movie.rating}</p>
+        <p className="text-sm text-gray-400">{Year}</p>
+        <p className="text-sm text-gray-400">
+          {Plot ? Plot : "No plot available."}
+        </p>
       </div>
     </div>
   );
